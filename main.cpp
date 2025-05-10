@@ -8,73 +8,73 @@ using namespace std;
 
 class NguoiDung {
 private:
-    string ten_dang_nhap;
-    string mat_khau;
+    string username;
+    string pass;
 
 public:
-    NguoiDung(string ten, string mk) {
-        ten_dang_nhap = ten;
-        mat_khau = mk;
+    NguoiDung(string _username, string _pass) {
+        username = _username;
+        pass = _pass;
     }
 
-    string layTenDangNhap() {
-        return ten_dang_nhap;
+    string getusername() {
+        return username;
     }
 
-    bool kiemTraMatKhau(string mk) {
-        return mat_khau == mk;
+    bool checkpass(string _pass) {
+        return pass == _pass;
     }
 };
 
-class CamBien {
+class CamBien{
 private:
-    int ma_so;
-    bool trang_thai;
+    int maso;
+    bool trangthai;
     int muc_khoi;
     string vi_tri;
 
 public:
     CamBien(int ma, string phong) {
-        ma_so = ma;
-        trang_thai = false;
+        maso = ma;
+        trangthai = false;
         muc_khoi = 0;
         vi_tri = phong;
     }
 
     void bat() {
-        trang_thai = true;
+        trangthai = true;
     }
 
     void tat() {
-        trang_thai = false;
+        trangthai = false;
     }
 
     void moPhongKhoi(int muc) {
-        if (trang_thai) {
+        if (trangthai) {
             muc_khoi = muc;
         }
     }
 
     void hienThi() {
-        cout << "Cam bien [" << ma_so << "] - " << (trang_thai ? "BAT" : "TAT")
+        cout << "Cam bien [" << maso << "] - " << (trangthai ? "BAT" : "TAT")
              << " - Muc khoi: " << muc_khoi
              << " - Vi tri: " << vi_tri << endl;
     }
 
-    int layMaSo() {
-        return ma_so;
+    int getmaso() {
+        return maso;
     }
 
-    string layViTri() {
+    string getvitri() {
         return vi_tri;
     }
 
-    int layMucKhoi() {
+    int getmuckhoi() {
         return muc_khoi;
     }
 
-    bool dangBat() {
-        return trang_thai;
+    bool dangbat() {
+        return trangthai;
     }
 };
 
@@ -204,12 +204,10 @@ public:
     }
 };
 
-// ======================== MENU HE THONG ================================
-
 void menuHeThong(HeThongBaoChay &ht) {
     int chon;
     do {
-        cout << "\n=== HE THONG BAO CHAY ===\n";
+        cout << "\nHE THONG BAO CHAY\n";
         cout << "1. Them cam bien\n";
         cout << "2. Xoa cam bien\n";
         cout << "3. Trang thai cam bien\n";
@@ -232,21 +230,19 @@ void menuHeThong(HeThongBaoChay &ht) {
         }
     } while (chon != 7);
 }
-
 // ======================== HAM MAIN ====================================
 
 int main() {
     HeThongBaoChay ht;
-    int chon;
+    int luachon;
     do {
         cout << "\n=== MENU ===\n";
         cout << "1. Dang ky\n";
         cout << "2. Dang nhap\n";
         cout << "3. Thoat\n";
-        cout << "Chon: ";
-        cin >> chon;
-
-        switch (chon) {
+        cout << "Lua chon: ";
+        cin >> luachon;
+        switch(luachon){
             case 1: ht.dangKy(); break;
             case 2:
                 if (ht.dangNhap()) {
@@ -256,7 +252,6 @@ int main() {
             case 3: cout << "Tam biet!\n"; break;
             default: cout << "Lua chon khong hop le.\n";
         }
-    } while (chon != 3);
-
+    } while(chon != 3);
     return 0;
 }
