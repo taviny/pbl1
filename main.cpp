@@ -78,8 +78,6 @@ public:
     }
 };
 
-// ======================== CLASS HE THONG ==============================
-
 class HeThongBaoChay {
 private:
     vector<NguoiDung> danh_sach_nguoi_dung;
@@ -230,8 +228,6 @@ void menuHeThong(HeThongBaoChay &ht) {
         }
     } while (chon != 7);
 }
-// ======================== HAM MAIN ====================================
-
 int main() {
     HeThongBaoChay ht;
     int luachon;
