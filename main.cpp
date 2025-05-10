@@ -107,10 +107,10 @@ public:
         cout << "Nhap mat khau: ";
         cin >> mk;
         danhsachnguoidung.push_back(nguoidung(ten, mk));
-        cout << "Dang ky thanh cong!\n";
+        cout<<"Dang ky thanh cong!\n";
     }
 
-    bool dangnhap() {
+    bool dangnhap(){
         string ten, mk;
         cout << "Nhap ten dang nhap: ";
         cin >> ten;
@@ -143,19 +143,19 @@ public:
         int ma;
         cout << "Nhap ma cam bien muon xoa: ";
         cin >> ma;
-        bool timthay = false;
+        bool timthay = 0;
 
         for (int i = 0; i < danhsachcambien.size(); i++) {
             if (danhsachcambien[i].getidcambien() == ma) {
                 danhsachcambien.erase(danhsachcambien.begin() + i);
                 cout << "Da xoa cam bien ma: " << ma << endl;
                 capnhatfilecambien();
-                timthay = true;
+                timthay = 1;
                 break;
             }
         }
 
-        if (!timthay) {
+        if(!timthay){
             cout << "Khong tim thay cam bien.\n";
         }
     }
@@ -182,20 +182,22 @@ public:
             danhsachcambien[ma - 1].mophongkhoi(muc);
             cout << "Da chinh sua muc khoi\n";
             capnhatfilecambien();
-        } else {
-            cout << "Khong tim thay cam bien.\n";
+        }
+        else{
+            cout<<"Khong tim thay cam bien.\n";
         }
     }
 
     void doitrangthaicambien() {
         int ma;
-        cout << "Nhap ma cam bien muon thay doi trang thai: ";
-        cin >> ma;
-        if (ma > 0 && ma <= danhsachcambien.size()) {
+        cout<<"Nhap ma cam bien muon thay doi trang thai: ";
+        cin>>ma;
+        if(ma > 0 && ma <= danhsachcambien.size()){
             danhsachcambien[ma - 1].doitrangthai();
             cout << "Trang thai cua cam bien " << ma << " da duoc doi.\n";
             capnhatfilecambien();
-        } else {
+        }
+        else{
             cout << "Khong tim thay cam bien.\n";
         }
     }
