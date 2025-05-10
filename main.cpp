@@ -2,30 +2,26 @@
 #include <vector>
 #include <string>
 #include <fstream>
-
 using namespace std;
 
-class NguoiDung {
+class nguoidung{
 private:
     string username;
     string pass;
-
 public:
-    NguoiDung(string _username, string _pass) {
+    nguoidung(string _username, string _pass){
         username = _username;
         pass = _pass;
     }
-
-    string getusername() {
+    string getusername(){
         return username;
     }
-
-    bool checkpass(string _pass) {
+    bool checkpass(string _pass){
         return pass == _pass;
     }
 };
 
-class cambien {
+class cambien{
 private:
     int idcambien;
     bool trangthai;
@@ -33,7 +29,7 @@ private:
     string vitri;
 
 public:
-    cambien(int ma, string phong) {
+    cambien(int ma, string phong){
         idcambien = ma;
         trangthai = 0;
         muckhoi = 0;
@@ -43,62 +39,64 @@ public:
     void bat() {
         trangthai=1;
     }
-
     void tat() {
         trangthai= 1;
     }
-
-    void mophongkhoi(int muc) {
+    void mophongkhoi(int muc){
         if (trangthai) {
             muckhoi = muc;
         }
     }
 
-    void hienthi() {
-        cout << "Cam bien [" << idcambien << "] - ";
-            if (trangthai == true) {
-                cout << "BAT";
+    void hienthi(){
+        cout << "Cam bien " << idcambien << " - ";
+            if (trangthai) {
+                cout << "Dang bat";
             }
             else{
-                cout << "TAT";
+                cout << "Dang tat";
             }
         cout << " - Muc khoi: " << muckhoi;
         cout << " - Vi tri: " << vitri << endl;
     }
-
-    int getidcambien() {
+    int getidcambien(){
         return idcambien;
     }
-
-    string getvitri() {
+    string getvitri(){
         return vitri;
     }
-
-    int getmuckhoi() {
+    int getmuckhoi(){
         return muckhoi;
     }
-
-    bool dangbat() {
+    bool dangbat(){
         return trangthai;
     }
-
-    void doitrangthai() {
-        trangthai = !trangthai;
+   void doitrangthai() {
+        if (trangthai == 1){
+            trangthai = 0;
+        }else{
+            trangthai = 0;
+        }
     }
 };
 
-class HeThongBaoChay {
+class Hethongbaochay{
 private:
-    vector<NguoiDung> danhsachnguoidung;
+    vector<nguoidung> danhsachnguoidung;
     vector<cambien> danhsachcambien;
     string tenfilecambien = "cambien.txt";
 
 public:
     void capnhatfilecambien() {
         ofstream tep(tenfilecambien);
-        for (auto &cb : danhsachcambien) {
-            tep << cb.getidcambien() << "," << (cb.dangbat() ? "BAT" : "TAT") << "," << cb.getmuckhoi() << "," << cb.getvitri() << endl;
-        }
+        for (int i = 0; i < danhsachcambien.size(); ++i) {
+            tep <<"ID: "<<danhsachcambien[i].getidcambien()<<" - Trang thai: ";
+                if (danhsachcambien[i].dangbat() == 1){
+        tep<<"Dang bat";
+    }
+    else{tep << "Dang tat";}
+    tep <<" - Muc khoi: "<< danhsachcambien[i].getmuckhoi()<<" - Vi tri: "<<danhsachcambien[i].getvitri()<<endl;
+}
         tep.close();
     }
 
@@ -108,7 +106,7 @@ public:
         cin >> ten;
         cout << "Nhap mat khau: ";
         cin >> mk;
-        danhsachnguoidung.push_back(NguoiDung(ten, mk));
+        danhsachnguoidung.push_back(nguoidung(ten, mk));
         cout << "Dang ky thanh cong!\n";
     }
 
@@ -180,7 +178,7 @@ public:
         cin >> ma;
         cout << "Nhap muc khoi (0-100): ";
         cin >> muc;
-        if (ma > 0 && ma <= danhsachcambien.size()) {
+        if (ma >0 && ma <= danhsachcambien.size()) {
             danhsachcambien[ma - 1].mophongkhoi(muc);
             cout << "Da chinh sua muc khoi\n";
             capnhatfilecambien();
@@ -223,21 +221,22 @@ public:
     }
 };
 
-void menuhethong(HeThongBaoChay &ht) {
+void menuhethong(Hethongbaochay &ht) {
     int chon;
     do {
-        cout << "\nHE THONG BAO CHAY\n";
-        cout << "1. Them cam bien\n";
-        cout << "2. Xoa cam bien\n";
-        cout << "3. Trang thai cam bien\n";
-        cout << "4. Chinh sua muc khoi\n";
-        cout << "5. Hien thi cam bien\n";
-        cout << "6. Xem danh sach cam bien da them\n";
-        cout << "7. Doi trang thai cam bien\n";
-        cout << "8. Thoat\n";
-        cout << "Chon: ";
-        cin >> chon;
-
+        cout<<"==================================="<<endl;
+        cout<<"HE THONG BAO CHAY"<<endl;
+        cout<<"1. Them cam bien"<<endl;
+        cout<<"2. Xoa cam bien"<<endl;
+        cout<<"3. Trang thai cam bien"<<endl;
+        cout<<"4. Chinh sua muc khoi"<<endl;
+        cout<<"5. Hien thi cam bien"<<endl;
+        cout<<"6. Xem danh sach cam bien da them"<<endl;
+        cout<<"7. Doi trang thai cam bien"<<endl;
+        cout<<"8. Thoat"<<endl;
+        cout<<"Lua chon: ";
+        cin>>chon;
+        cout<<"==================================="<<endl;
         switch (chon) {
             case 1: ht.themcambien(); break;
             case 2: ht.xoacambien(); break;
@@ -246,14 +245,14 @@ void menuhethong(HeThongBaoChay &ht) {
             case 5: ht.hienthicambien(); break;
             case 6: ht.xemdanhsachcambiendathem(); break;
             case 7: ht.doitrangthaicambien(); break;
-            case 8: cout << "Dang thoat...\n"; break;
+            case 8: cout << "Thoat\n"; break;
             default: cout << "Lua chon sai.\n";
         }
     } while (chon != 8);
 }
 
 int main() {
-    HeThongBaoChay ht;
+    Hethongbaochay ht;
     int luachon;
     do {
         cout << "\n=== MENU ===\n";
