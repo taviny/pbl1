@@ -27,13 +27,13 @@ public:
 
 class cambien {
 private:
-    int idcambien;
+    string idcambien;
     bool trangthai;
     int muckhoi;
     string vitri;
 
 public:
-    cambien(int ma, string phong) {
+    cambien(string ma, string phong) {
         idcambien = ma;
         trangthai = 0;
         muckhoi = 0;
@@ -44,7 +44,7 @@ public:
         trangthai=1;
     }
     void tat() {
-        trangthai= 1;
+        trangthai= 0;
     }
     void mophongkhoi(int muc){
         if (trangthai) {
@@ -63,7 +63,7 @@ public:
         cout << " - Muc khoi: " << muckhoi;
         cout << " - Vi tri: " << vitri << endl;
     }
-    int getidcambien(){
+    string getidcambien(){
         return idcambien;
     }
     string getvitri(){
@@ -133,17 +133,31 @@ public:
         return false;
     }
 
+    bool checktrungidcambien(string _idcambien) {
+    for(int i=0; i<danhsachcambien.size(); i++){
+        if (danhsachcambien[i].getidcambien() == _idcambien){
+            return true;
+        }
+    }
+
     void themcambien() {
-        string phong;
-        int ma = danhsachcambien.size() + 1;
+        string ma, phong;
+        cout<<"Nhap ma cam bien: ";
+        cin>>ma;
+        if(checktrungidcambien(ma)){
+        cout << "Trung ma, nhap ma khac.";
+        return;}
         cout<<"Nhap vi tri cam bien: ";
         cin.ignore();
         getline(cin, phong);
         cambien moi(ma, phong);
         danhsachcambien.push_back(moi);
-        cout << "Da them cam bien ma: " << ma << " tai phong: " << phong << endl;
+        cout << "Da them cam bien ID: " << ma << " tai phong: " << phong << endl;
         capnhatfilecambien();
     }
+
+
+    return false;}
 
     void xoacambien() {
         int ma;
