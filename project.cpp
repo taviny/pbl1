@@ -290,7 +290,7 @@ void menuhethong(HeThongBaoChay &ht){
 int main(){
     HeThongBaoChay ht;
     int luachon1;
-    int dem;
+    int dem=0;
     do{
         cout<<endl;
         cout << "TAI KHOAN 2"<<endl;
