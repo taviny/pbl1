@@ -315,7 +315,8 @@ int main(){
                 else{
                     dem++;
                     if(dem>=3){
-                        cout<<"Nhap sai qua 3 lan \n THOAT CHUONG TRINH";
+                        cout<<"============================"<<endl;
+                        cout<<" Nhap sai qua 3 lan \n THOAT CHUONG TRINH\n";
                         return 0;
 
                     }
