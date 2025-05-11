@@ -80,7 +80,7 @@ public:
         if (trangthai == 1){
             trangthai = 0;
         }else{
-            trangthai = 0;
+            trangthai = 1;
         }
     }
 };
@@ -133,12 +133,12 @@ public:
         return false;
     }
 
-    bool checktrungidcambien(string _idcambien) {
+    bool checktrungidcambien(string _idcambien){
     for(int i=0; i<danhsachcambien.size(); i++){
         if (danhsachcambien[i].getidcambien() == _idcambien){
             return true;
         }
-    }
+    }}
 
     void themcambien() {
         string ma, phong;
@@ -160,7 +160,7 @@ public:
     return false;}
 
     void xoacambien() {
-        int ma;
+        string ma;
         cout<<"Nhap ma cam bien muon xoa: ";
         cin >> ma;
         bool timthay = false;
