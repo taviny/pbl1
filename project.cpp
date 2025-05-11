@@ -40,14 +40,14 @@ public:
         vitri = phong;
     }
 
-    void bat() {
+    void bat(){
         trangthai=1;
     }
-    void tat() {
+    void tat(){
         trangthai= 0;
     }
     void mophongkhoi(int muc){
-        if (trangthai) {
+        if(trangthai){
             muckhoi = muc;
         }
     }
@@ -69,7 +69,6 @@ public:
     string getvitri(){
         return vitri;
     }
-
     int getmuckhoi(){
         return muckhoi;
     }
@@ -85,16 +84,16 @@ public:
     }
 };
 
-class HeThongBaoChay {
+class HeThongBaoChay{
 private:
     vector<NguoiDung> danhsachnguoidung;
     vector<cambien> danhsachcambien;
     string filecambien = "cambien.txt";
 
 public:
-    void capnhatfilecambien() {
+    void capnhatfilecambien(){
         ofstream tep(filecambien);
-        for (int i = 0; i < danhsachcambien.size(); ++i) {
+        for (int i = 0; i < danhsachcambien.size(); ++i){
             tep <<"ID: "<<danhsachcambien[i].getidcambien()<<" - Trang thai: ";
                 if (danhsachcambien[i].dangbat() == 1){
         tep<<"Dang bat";
@@ -181,45 +180,55 @@ public:
     }
 
     void trangthaicambien(){
-        int ma;
+        string ma;
         cout << "Nhap ma cam bien muon kiem tra: ";
         cin >> ma;
-        if (ma > 0 && ma <= danhsachcambien.size()) {
-            cout << "Trang thai cam bien ma " << ma << ": "
-                 << (danhsachcambien[ma - 1].dangbat() ? "BAT" : "TAT") << endl;
-        } else {
-            cout << "Khong tim thay cam bien.\n";
+
+        for(int i = 0; i < danhsachcambien.size(); i++){
+        if(danhsachcambien[i].getidcambien() == ma){
+                cout << "Trang thai cam bien ma " << ma << ": "<< (danhsachcambien[i].dangbat() ? "BAT" : "TAT") << endl;
+        } else{
+            cout <<"Khong tim thay cam bien"<<endl;
         }
-    }
+            }
+        }
+
 
     void mophongkhoi(){
-        int ma, muc;
+        string ma;
+        int muc;
         cout<<"Nhap ma cam bien: ";
         cin>>ma;
         cout<<"Nhap muc khoi (0-100): ";
         cin>>muc;
-        if (ma > 0 && ma <= danhsachcambien.size()){
-            danhsachcambien[ma - 1].mophongkhoi(muc);
+
+        for(int i = 0; i < danhsachcambien.size(); i++){
+        if(danhsachcambien[i].getidcambien() == ma){
+            danhsachcambien[i].mophongkhoi(muc);
             cout<<"Da chinh sua muc khoi"<<endl;
             capnhatfilecambien();
         } else {
             cout<<"Khong tim thay cam bien"<<endl;
         }
     }
+        
+    }
 
     void doitrangthaicambien(){
-        int ma;
+        string ma;
         cout<<"Nhap ID cam bien: ";
         cin>>ma;
-        if(ma > 0 && ma <= danhsachcambien.size()){
-            danhsachcambien[ma - 1].doitrangthai();
-            cout<<"Trang thai cua cam bien "<< ma <<" da duoc doi"<<endl;
+
+    for(int i=0; i <danhsachcambien.size(); i++){
+        if (danhsachcambien[i].getidcambien() == ma){
+            danhsachcambien[i].doitrangthai();
+            cout << "Trang thai cua cam bien " << ma << " da duoc doi" << endl;
             capnhatfilecambien();
         } 
         else{
             cout<<"Khong tim thay cam bien"<<endl;
         }
-    }
+    }}
 
     void hienthicambien(){
         if (danhsachcambien.empty()) {
@@ -246,7 +255,7 @@ void menuhethong(HeThongBaoChay &ht){
     int luachon;
     do{
         cout<<endl;
-        cout<<"===================================1"<<endl;        
+        cout<<"==================================="<<endl;        
         cout<<endl;
         cout<<"HE THONG BAO CHAY"<<endl;
         cout<<"1. Them cam bien"<<endl;
@@ -278,12 +287,12 @@ void menuhethong(HeThongBaoChay &ht){
     }while(luachon != 8);
 }
 
-int main() {
+int main(){
     HeThongBaoChay ht;
     int luachon1;
     do{
         cout<<endl;
-        cout << "TAI KHOAN"<<endl;
+        cout << "TAI KHOAN 1"<<endl;
         cout<<endl;
         cout << "1. Dang ky";
         cout<<endl;
