@@ -113,7 +113,7 @@ public:
         cout << "Nhap mat khau: ";
         cin>>mk;
         danhsachnguoidung.push_back(NguoiDung(ten, mk));
-        cout << "Dang ky thanh cong!\n";
+        cout << "Dang ky thanh cong"<<endl;
     }
 
     bool dangnhap(){
@@ -135,12 +135,14 @@ public:
 
     bool checktrungidcambien(string _idcambien){
     for(int i=0; i<danhsachcambien.size(); i++){
-        if (danhsachcambien[i].getidcambien() == _idcambien){
+        if(danhsachcambien[i].getidcambien() == _idcambien){
             return true;
         }
-    }}
+    }
+    return false;
+}
 
-    void themcambien() {
+    void themcambien(){
         string ma, phong;
         cout<<"Nhap ma cam bien: ";
         cin>>ma;
@@ -157,11 +159,9 @@ public:
     }
 
 
-    return false;}
-
     void xoacambien() {
         string ma;
-        cout<<"Nhap ma cam bien muon xoa: ";
+        cout<<"Nhap ID cam bien muon xoa: ";
         cin >> ma;
         bool timthay = false;
 
