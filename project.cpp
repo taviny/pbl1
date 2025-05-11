@@ -2,24 +2,20 @@
 #include <vector>
 #include <string>
 #include <fstream>
-
 using namespace std;
 
 class NguoiDung {
 private:
     string username;
     string pass;
-
 public:
     NguoiDung(string _username, string _pass) {
         username = _username;
         pass = _pass;
     }
-
     string getusername() {
         return username;
     }
-
     bool checkpass(string _pass) {
         return pass == _pass;
     }
@@ -31,7 +27,6 @@ private:
     bool trangthai;
     int muckhoi;
     string vitri;
-
 public:
     cambien(string ma, string phong) {
         idcambien = ma;
@@ -39,7 +34,6 @@ public:
         muckhoi = 0;
         vitri = phong;
     }
-
     void bat(){
         trangthai=1;
     }
@@ -89,7 +83,6 @@ private:
     vector<NguoiDung> danhsachnguoidung;
     vector<cambien> danhsachcambien;
     string filecambien = "cambien.txt";
-
 public:
     void capnhatfilecambien(){
         ofstream tep(filecambien);
@@ -140,7 +133,6 @@ public:
     }
     return false;
 }
-
     void themcambien(){
         string ma, phong;
         cout<<"Nhap ma cam bien: ";
@@ -156,8 +148,6 @@ public:
         cout << "Da them cam bien ID: " << ma << " tai phong: " << phong << endl;
         capnhatfilecambien();
     }
-
-
     void xoacambien(){
         string ma;
         cout<<"Nhap ID cam bien muon xoa: ";
