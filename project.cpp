@@ -293,7 +293,7 @@ int main(){
     int dem=0;
     do{
         cout<<endl;
-        cout << "TAI KHOAN 2"<<endl;
+        cout << "TAI KHOAN"<<endl;
         cout<<endl;
         cout << "1. Dang ky";
         cout<<endl;
