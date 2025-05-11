@@ -255,7 +255,7 @@ void menuhethong(HeThongBaoChay &ht){
     int luachon;
     do{
         cout<<endl;
-        cout<<"==================================="<<endl;        
+        cout<<"================================================"<<endl;        
         cout<<endl;
         cout<<"HE THONG BAO CHAY"<<endl;
         cout<<"1. Them cam bien"<<endl;
@@ -270,7 +270,7 @@ void menuhethong(HeThongBaoChay &ht){
         cout<<"Lua chon: ";
         cin>>luachon;
         cout<<endl;
-        cout<<"==================================="<<endl;
+        cout<<"================================================"<<endl;
         cout<<endl;
 
         switch(luachon){
@@ -290,9 +290,10 @@ void menuhethong(HeThongBaoChay &ht){
 int main(){
     HeThongBaoChay ht;
     int luachon1;
+    int dem;
     do{
         cout<<endl;
-        cout << "TAI KHOAN 1"<<endl;
+        cout << "TAI KHOAN 2"<<endl;
         cout<<endl;
         cout << "1. Dang ky";
         cout<<endl;
@@ -308,8 +309,19 @@ int main(){
                 break;
             case 2:
                 if(ht.dangnhap()){
+                    dem=0;
                     menuhethong(ht);
                 }
+                else{
+                    dem++;
+                    if(dem>=3){
+                        cout<<"Nhap sai qua 3 lan \n THOAT CHUONG TRINH";
+                        return 0;
+
+                    }
+                else{
+                    cout<<"Ban da nhap sai "<<dem<<" lan. Ban con "<<3-dem<<" lan thu";
+                }}
                 break;
             case 3: cout << "ok"<<endl; break;
             default: cout << "Lua chon sai.\n";
