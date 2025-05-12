@@ -178,9 +178,9 @@ public:
         for(int i = 0; i < danhsachcambien.size(); i++){
         if(danhsachcambien[i].getidcambien() == ma){
             if(danhsachcambien[i].dangbat()){
-                cout<<"Dang bat"<<endl;
+                cout<<"ID: "<<danhsachcambien[i].getidcambien()<<": Dang bat"<<endl;
             }
-            else{cout<<"Dang tat"<<endl;}
+            else{cout<<"ID: "<<danhsachcambien[i].getidcambien()<<": Dang tat"<<endl;}
         }
         else{cout<<"Khong tim thay cam bien;"<<endl;}
     }}
@@ -283,7 +283,7 @@ int main(){
     int dem=0;
     do{
         cout<<endl;
-        cout << "TAI KHOAN 2"<<endl;
+        cout << "TAI KHOAN"<<endl;
         cout<<endl;
         cout << "1. Dang ky";
         cout<<endl;
