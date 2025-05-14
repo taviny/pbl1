@@ -239,6 +239,11 @@ public:
         }
         tep.close();
     }
+void kiemtrachay(){
+    for(int i=0; i < danhsachcambien.size(); i++){
+    if(danhsachcambien[i].getmuckhoi()>69){
+        cout<<"SOS: PHONG "<<danhsachcambien[i].getvitri()<<" DANG CHAY"<<endl;
+    }}
 };
 
 void menuhethong(HeThongBaoChay &ht){
