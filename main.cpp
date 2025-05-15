@@ -242,7 +242,7 @@ public:
 void kiemtrachay(){
     for(int i=0; i < danhsachcambien.size(); i++){
     if(danhsachcambien[i].getmuckhoi()>69){
-        cout<<"SOS: PHONG "<<danhsachcambien[i].getvitri()<<" DANG CHAY"<<endl;
+        cout<<"SOS: CAM BIEN "<<danhsashcambien[i].getidcambien<<" - PHONG "<<danhsachcambien[i].getvitri()<<" DANG CHAY"<<endl;
     }}
 };
 
@@ -252,7 +252,8 @@ void menuhethong(HeThongBaoChay &ht){
         cout<<endl;
         cout<<"================================================"<<endl;        
         cout<<endl;
-        cout<<"HE THONG BAO CHAY"<<endl;
+        ht.kiemtrachay();
+        cout<<"\nHE THONG BAO CHAY\n"<<endl;
         cout<<"1. Them cam bien"<<endl;
         cout<<"2. Xoa cam bien"<<endl;
         cout<<"3. Trang thai cam bien"<<endl;
